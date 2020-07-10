@@ -1,0 +1,61 @@
+<section>
+  <md-toolbar class="md-primary md-hue-2">
+    <div class="md-toolbar-tools breadcrumbs">
+      <a href ng-click="back()"> Back </a>
+
+      <md-icon>keyboard_arrow_right</md-icon>
+
+      <span flex>Settings</span>
+    </div>
+  </md-toolbar>
+
+  <md-card flex="70" flex-offset="15" layout-padding>
+    <form name="settingsForm" ng-submit="save()">
+      <md-input-container class="md-block">
+        <label>Client ID</label>
+        <input required name="client_id" ng-model="clonedSettings.client_id" />
+
+        <div ng-messages="settingsForm.client_id.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>API Key</label>
+        <input required name="api_key" ng-model="clonedSettings.api_key" />
+
+        <div ng-messages="settingsForm.api_key.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Parent Folder ID</label>
+        <input required name="parent_folder_id" ng-model="clonedSettings.parent_folder_id" />
+
+        <div ng-messages="settingsForm.parent_folder_id.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Filters JSON</label>
+        <textarea
+          required
+          name="filters"
+          ng-model="clonedSettings.filters"
+          class="code-syntax"
+        ></textarea>
+
+        <div ng-messages="settingsForm.filters.$error" role="alert">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <div>
+        <md-button class="md-raised md-primary" type="submit">Save</md-button>
+        <a href="/" class="md-button md-secondary">Cancel</a>
+      </div>
+    </form>
+  </md-card>
+</section>

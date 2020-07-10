@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <title>Knowledge Base</title>
+
+    <base href="/" />
+
+    <script>
+      var KnowledgeBase = {
+        CLIENT_ID: "{{ CLIENT_ID }}",
+        API_KEY: "{{ API_KEY }}",
+        PARENT_FOLDER_ID: "{{ PARENT_FOLDER_ID }}",
+        FILTERS: {{ FILTERS|safe }}
+      };
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Product+Sans|Roboto:300,400,400italic,500,700,700italic"
+    />
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+    <link
+      rel="stylesheet"
+      href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+  </head>
+  <body layout="column" ng-app="App" ng-cloak ng-controller="AppController">
+    <md-toolbar class="md-toolbar-tools">
+      <h1 flex class="logo">Knowledge Base</h1>
+
+      <md-button id="authorize-button" ng-click="auth()" style="display: none;">
+        <md-icon md-menu-align-target>account_circle</md-icon>
+        Authorize
+      </md-button>
+
+      <md-button id="sign-out-button" ng-click="signOut()" style="display: none;">
+        <md-icon md-menu-align-target>exit_to_app</md-icon>
+        Sign Out
+      </md-button>
+
+      <md-menu md-position-mode="target bottom">
+        <md-button
+          aria-label="Open settings menu"
+          class="md-icon-button"
+          ng-click="$mdMenu.open($event)"
+        >
+          <md-icon>more_vert</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ng-click="settings()">
+              <md-icon md-menu-align-target>settings</md-icon>
+              Settings
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-toolbar>
+
+    <md-content flex> <div flex ng-view></div> </md-content>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-messages.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-sanitize.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+    <script src="//apis.google.com/js/client.js?onload=init"></script>
+  </body>
+</html>

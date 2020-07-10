@@ -1,0 +1,54 @@
+<div layout="row" flex="70" flex-offset="15" class="search">
+  <form layout="row" ng-submit="search()">
+    <div class="search-bar" layout="row" layout-align="center center">
+      <md-icon class="search-icon">search</md-icon>
+      <input type="text" ng-model="query" placeholder="Search" class="search-input" />
+    </div>
+    <md-button class="search-button md-primary md-raised" type="submit">Search</md-button>
+  </form>
+</div>
+
+<div layout="row" flex="70" flex-offset="15">
+  <div flex="20" layout="column">
+    <div ng-repeat="(filter, values) in filters">
+      <md-subheader>{{filter}}</md-subheader>
+
+      <div ng-repeat="item in filters[filter]">
+        <md-checkbox
+          ng-checked="filterExists(item, selectedFilters)"
+          ng-click="toggleFilter(item, selectedFilters)"
+        >
+          {{item}}
+        </md-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <section flex>
+    <md-card ng-show="results.length">
+      <md-list class="results-list">
+        <md-list-item class="result md-2-line" ng-repeat="result in results">
+          <div class="md-list-item-text">
+            <h3>
+              <a href="https://drive.google.com/open?id={{result.id}}" target="_blank">
+                {{result.title}}
+              </a>
+            </h3>
+
+            <p>
+              <span class="tag" ng-repeat="tag in result.tags">
+                {{tag}}
+              </span>
+            </p>
+          </div>
+
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <div class="no-results" ng-show="!results.length">
+      <p>No results.</p>
+    </div>
+  </section>
+</div>
